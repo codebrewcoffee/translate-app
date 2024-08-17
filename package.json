@@ -38,6 +38,7 @@
     "gaxios": "^6.7.1",
     "gcp-metadata": "^6.1.0",
     "get-caller-file": "^2.0.5",
+    "gh-pages": "^6.1.1",
     "google-auth-library": "^9.13.0",
     "google-gax": "^4.3.9",
     "gtoken": "^7.1.0",
