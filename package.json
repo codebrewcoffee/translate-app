@@ -82,7 +82,9 @@
     "yargs-parser": "^21.1.1"
   },
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "start:prod": "npm run build --prefix client && npm run start --prefix server",
+    "heroku-postbuild": "npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
