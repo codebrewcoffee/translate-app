@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
   "dependencies": {
     "@google-cloud/translate": "^8.4.0",
     "abort-controller": "^3.0.0",
@@ -84,7 +88,7 @@
   "scripts": {
     "start": "node server/server.js",
     "start:prod": "npm run build --prefix client && npm run start --prefix server",
-    "heroku-postbuild": "npm run build --prefix client"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
