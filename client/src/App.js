@@ -9,12 +9,14 @@ function TranslationApp() {
   const [sourceLang, setSourceLang] = useState("en"); // Source language
   const [targetLang, setTargetLang] = useState("es"); // Target language
 
-  // Function to handle translation (to be implemented later)
+  // Function to handle translation
   const handleTranslate = async () => {
     if (!text) return;
 
     try {
-      const response = await fetch("http://localhost:3001/translate", {
+      const API_URL = "https://translate-app-731bce401712.herokuapp.com/";
+
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
