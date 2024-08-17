@@ -2,6 +2,7 @@ const express = require("express");
 const { Translate } = require("@google-cloud/translate").v2;
 const cors = require("cors");
 const http = require("http");
+const path = require("path"); // Add this line
 require("dotenv").config();
 
 const app = express();
@@ -52,6 +53,14 @@ app.post("/translate", async (req, res) => {
     console.error("Error during translation request:", error);
     res.status(500).send("Translation failed");
   }
+});
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
+
+// Handle React routing, return all requests to React app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
 });
 
 const server = http.createServer(
