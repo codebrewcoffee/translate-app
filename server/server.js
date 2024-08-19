@@ -16,6 +16,7 @@ const allowedOrigins = [
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
+// CORS configuration
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -49,10 +50,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Initialize Google Cloud Translate API
 const translate = new Translate({
   key: process.env.GOOGLE_CLOUD_TRANSLATE_API_KEY,
 });
 
+// Translation endpoint
 app.post("/translate", async (req, res) => {
   const { text, targetLang } = req.body;
 
@@ -77,6 +80,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
 });
 
+// Create and start HTTP server
 const server = http.createServer(
   {
     maxHeadersCount: 2000,
