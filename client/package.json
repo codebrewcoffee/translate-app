@@ -2,7 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "main": "index.js",
-  "homepage": "https://codebrewcoffee.github.io/translate-app/",
+  "homepage": "/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
