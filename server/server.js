@@ -2,18 +2,32 @@ const express = require("express");
 const { Translate } = require("@google-cloud/translate").v2;
 const cors = require("cors");
 const http = require("http");
-const path = require("path"); // Add this line
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://codebrewcoffee.github.io",
+];
+
 // Middleware to handle larger request bodies
-app.use(express.json({ limit: "10mb" })); // Adjust as needed
+app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with the correct URL for your frontend
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        // Allow requests with no origin (e.g., mobile apps or curl requests)
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 
@@ -65,8 +79,8 @@ app.get("*", (req, res) => {
 
 const server = http.createServer(
   {
-    maxHeadersCount: 2000, // Default is usually 1000; increase this if needed
-    maxHeaderSize: 8192, // This sets the maximum size of the headers in bytes (default is 8192 bytes or 8 KB)
+    maxHeadersCount: 2000,
+    maxHeaderSize: 8192,
   },
   app
 );
