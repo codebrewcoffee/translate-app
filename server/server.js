@@ -1,9 +1,10 @@
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, ".env") }); // Ensure this is at the top of your file
+
 const express = require("express");
 const { Translate } = require("@google-cloud/translate").v2;
 const cors = require("cors");
 const http = require("http");
-const path = require("path");
-require("dotenv").config();
 
 const app = express();
 
@@ -21,7 +22,6 @@ app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
-        // Allow requests with no origin (e.g., mobile apps or curl requests)
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
@@ -49,6 +49,12 @@ app.use((req, res, next) => {
   console.log("Request Headers:", req.headers);
   next();
 });
+
+// Verify that the API key is loaded correctly
+console.log(
+  "Google Cloud API Key:",
+  process.env.GOOGLE_CLOUD_TRANSLATE_API_KEY
+);
 
 // Initialize Google Cloud Translate API
 const translate = new Translate({
