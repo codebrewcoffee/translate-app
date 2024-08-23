@@ -2,14 +2,14 @@
 import React, { useState } from "react";
 import "./App.css";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function TranslationApp() {
-  // State variables for managing input and output
   const [text, setText] = useState(""); // Text to be translated
   const [translatedText, setTranslatedText] = useState(""); // Translated text
   const [sourceLang, setSourceLang] = useState("en"); // Source language
   const [targetLang, setTargetLang] = useState("es"); // Target language
 
-  // Function to handle translation
   const handleTranslate = async () => {
     if (!text) return;
 
@@ -31,7 +31,7 @@ function TranslationApp() {
       }
 
       const data = await response.json();
-      // Process the data received from the server
+      setTranslatedText(data.translatedText); // Update state with translated text
     } catch (error) {
       console.error("Fetch error:", error);
     }
