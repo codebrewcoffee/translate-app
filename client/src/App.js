@@ -14,7 +14,7 @@ function TranslationApp() {
     if (!text) return;
 
     try {
-      const API_URL = "http://localhost:3001/translate"; // Update this URL
+      const API_URL = "https://translate-app-f0a942ad149f.herokuapp.com/";
 
       const response = await fetch(API_URL, {
         method: "POST",
