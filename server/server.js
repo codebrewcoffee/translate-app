@@ -12,6 +12,7 @@ const allowedOrigins = [
   "http://localhost:3000", // React default port
   "https://codebrewcoffee.github.io",
   "https://translate-app-f0a942ad149f.herokuapp.com",
+  "https://translate-app-fedu.onrender.com",
 ];
 
 // Middleware to handle larger request bodies
