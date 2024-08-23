@@ -21,7 +21,6 @@ function TranslationApp() {
         },
         body: JSON.stringify({
           text,
-          sourceLang,
           targetLang,
         }),
       });
