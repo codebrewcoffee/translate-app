@@ -11,6 +11,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "https://codebrewcoffee.github.io",
+  "https://translate-app-f0a942ad149f.herokuapp.com",
 ];
 
 // Middleware to handle larger request bodies

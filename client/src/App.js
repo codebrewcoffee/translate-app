@@ -14,9 +14,6 @@ function TranslationApp() {
     if (!text) return;
 
     try {
-      const API_URL =
-        "https://translate-app-f0a942ad149f.herokuapp.com/translate";
-
       const response = await fetch(API_URL, {
         method: "POST",
         headers: {
@@ -30,14 +27,13 @@ function TranslationApp() {
       });
 
       if (!response.ok) {
-        throw new Error("Translation request failed");
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const data = await response.json();
-      setTranslatedText(data.translatedText);
+      // Process the data received from the server
     } catch (error) {
-      console.error("Error translating text:", error);
-      setTranslatedText("Translation failed. Please try again.");
+      console.error("Fetch error:", error);
     }
   };
 
