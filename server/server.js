@@ -9,7 +9,7 @@ const http = require("http");
 const app = express();
 
 const allowedOrigins = [
-  "https://your-frontend-url.onrender.com", // Update this to match your actual frontend URL
+  "https://translate-app-fedu.onrender.com", // Replace with your actual frontend URL
 ];
 
 // Middleware to handle larger request bodies
