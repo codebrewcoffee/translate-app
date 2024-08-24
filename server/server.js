@@ -9,10 +9,7 @@ const http = require("http");
 const app = express();
 
 const allowedOrigins = [
-  "http://localhost:3000", // React default port
-  "https://codebrewcoffee.github.io",
-  "https://translate-app-f0a942ad149f.herokuapp.com",
-  "https://translate-app-fedu.onrender.com",
+  "https://your-frontend-url.onrender.com", // Update this to match your actual frontend URL
 ];
 
 // Middleware to handle larger request bodies
