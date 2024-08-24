@@ -86,6 +86,7 @@ app.get("*", (req, res) => {
 });
 
 // Create and start HTTP server
+const port = process.env.PORT || 3001; // Use PORT from environment or fallback to 3001
 const server = http.createServer(
   {
     maxHeadersCount: 2000,
@@ -94,7 +95,6 @@ const server = http.createServer(
   app
 );
 
-const PORT = process.env.PORT || 3001;
-server.listen(PORT, () =>
-  console.log(`Server is running on http://localhost:${PORT}`)
-);
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`); // Updated log message
+});
