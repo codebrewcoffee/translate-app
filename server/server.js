@@ -9,7 +9,9 @@ const http = require("http");
 const app = express();
 
 const allowedOrigins = [
-  "https://translate-app-fedu.onrender.com", // Replace with your actual frontend URL
+  "http://localhost:3000", // React default port
+  "https://codebrewcoffee.github.io",
+  "https://translate-app-f0a942ad149f.herokuapp.com",
 ];
 
 // Middleware to handle larger request bodies
@@ -86,7 +88,6 @@ app.get("*", (req, res) => {
 });
 
 // Create and start HTTP server
-const port = process.env.PORT || 3001; // Use PORT from environment or fallback to 3001
 const server = http.createServer(
   {
     maxHeadersCount: 2000,
@@ -95,6 +96,7 @@ const server = http.createServer(
   app
 );
 
-server.listen(port, () => {
-  console.log(`Server is running on port ${port}`); // Updated log message
-});
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () =>
+  console.log(`Server is running on http://localhost:${PORT}`)
+);
