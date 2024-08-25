@@ -64,6 +64,7 @@ const translate = new Translate({
 
 // Translation endpoint
 app.post("/translate", async (req, res) => {
+  console.log("Received request:", req.body); // Add this line to log incoming requests
   const { text, targetLang } = req.body;
 
   if (!text || !targetLang) {
