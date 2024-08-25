@@ -14,7 +14,7 @@ function TranslationApp() {
     if (!text) return;
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(`${API_URL}/translate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
