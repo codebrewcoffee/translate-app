@@ -1,10 +1,11 @@
 {
   "name": "translate-app",
   "version": "1.0.0",
-  "scripts": {
-    "start": "node server/server.js",
-    "start:prod": "npm run build --prefix client && npm run start --prefix server",
-    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
   },
   "dependencies": {
     "@google-cloud/translate": "^8.4.0",
@@ -84,6 +85,14 @@
     "yargs": "^17.7.2",
     "yargs-parser": "^21.1.1"
   },
+  "scripts": {
+    "start": "node server/server.js",
+    "start:prod": "npm run build --prefix client && npm run start --prefix server",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "gh-pages": "^6.1.1"
   }
