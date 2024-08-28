@@ -1,5 +1,5 @@
-const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, ".env") }); // Ensure this is at the top of your file
+const path = require("path");
 
 const express = require("express");
 const { Translate } = require("@google-cloud/translate").v2;
